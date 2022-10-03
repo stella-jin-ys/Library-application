@@ -8,7 +8,7 @@ const DVDSchema = new mongoose.Schema(
       unique: true,
     },
     runtimeMinutes: {
-      type: Number,
+      type: String,
       required: true,
       unique: false,
     },
@@ -21,9 +21,8 @@ const DVDSchema = new mongoose.Schema(
       required: true,
     },
     categoryId: {
-      type: Number,
-      required: true,
-      unique: true,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Category",
     },
   },
   {

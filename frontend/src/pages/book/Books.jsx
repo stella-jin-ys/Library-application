@@ -12,6 +12,19 @@ export default function Books() {
         <Link to="/books/newbook" className="link">
           <button className="button">New Book</button>
         </Link>
+        <div>
+          <h1>All Books</h1>
+          <table>
+            <tr>
+              <th>Book Title</th>
+              <th>Book Author</th>
+              <th>Book Pages</th>
+              <th>Book Type</th>
+              <th>Book Is Borrowable</th>
+              <th>Book Category</th>
+            </tr>
+          </table>
+        </div>
       </div>
     </div>
   );

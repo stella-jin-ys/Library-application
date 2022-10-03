@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const Category = require("../models/ Category");
+const Category = require("../models/Category");
 
 // Create category
 router.post("/", async (req, res) => {
@@ -36,7 +36,7 @@ router.get("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   try {
     const category = await Category.findById(req.params.id);
-    if (category.length === 0) {
+    if (category.length !== 0) {
       try {
         if (category) await category.delete();
         res.status(200).json("This category has been deleted");

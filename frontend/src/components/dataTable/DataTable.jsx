@@ -42,7 +42,6 @@ export default function DataTable() {
         columns={columns}
         pageSize={8}
         rowsPerPageOptions={[8]}
-        checkboxSelection
       />
     </div>
   );
