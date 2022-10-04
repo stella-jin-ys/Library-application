@@ -1,7 +1,7 @@
-.books {
+.dvds {
   display: flex;
 
-  .booksContainer {
+  .dvdsContainer {
     flex: 5;
 
     button {
@@ -15,7 +15,7 @@
       float: right;
     }
 
-    .bookInfo {
+    .dvdInfo {
       margin-top: 20px;
       text-align: center;
       width: 100%;
@@ -31,7 +31,7 @@
       li {
         list-style: none;
       }
-      .book {
+      .dvd {
         display: flex;
         flex-wrap: wrap;
       }

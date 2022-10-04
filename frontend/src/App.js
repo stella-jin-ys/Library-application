@@ -5,6 +5,8 @@ import Categories from "./pages/category/Categories";
 import NewCategory from "./pages/category/NewCategory";
 import Books from "./pages/book/Books";
 import NewBook from "./pages/book/NewBook";
+import DVDs from "./pages/dvd/DVDs";
+import NewDVD from "./pages/dvd/NewDVD";
 
 function App() {
   return (
@@ -13,9 +15,11 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="categories" element={<Categories />} />
-          <Route path="/newcategory" element={<NewCategory />} />
+          <Route path="categories/newcategory" element={<NewCategory />} />
           <Route path="books" element={<Books />} />
-          <Route path="newbook" element={<NewBook />}></Route>
+          <Route path="books/newbook" element={<NewBook />} />
+          <Route path="dvds" element={<DVDs />} />
+          <Route path="dvds/newDvd" element={<NewDVD />} />
           <Route path="employees" element={<Employees />} />
         </Routes>
       </BrowserRouter>

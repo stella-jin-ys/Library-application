@@ -15,12 +15,15 @@ router.post("/", async (req, res) => {
 
 // Get all books
 router.get("/", async (req, res) => {
-  const categoryId = req.query.category;
+  const category = req.query.category;
   const type = req.query.type;
   try {
     let books;
-    if (categoryId) {
-      books = await Book.find({ categoryId });
+    if (category) {
+      books = await Book.find({
+        // categoryId: { $in: [category] },
+        category,
+      });
     } else if (type) {
       books = await Book.find({ type });
     } else {

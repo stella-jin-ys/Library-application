@@ -15,7 +15,7 @@ router.post("/", async (req, res) => {
 
 // Get all DVDs
 router.get("/", async (req, res) => {
-  const category = req.query.category;
+  const categoryId = req.query.category;
   const type = req.query.type;
   try {
     let dvds;
@@ -42,7 +42,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-// Delete book
+// Delete dvd
 router.delete("/:id", async (req, res) => {
   try {
     const dvd = await DVD.findById(req.params.id);
