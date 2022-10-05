@@ -10,7 +10,6 @@ export default function NewBook() {
   const titleInput = useRef();
   const authorInput = useRef();
   const pagesInput = useRef();
-  const typeInput = useRef();
   const categoryInput = useRef();
 
   const handleSubmit = async (e) => {
@@ -20,11 +19,15 @@ export default function NewBook() {
         title: titleInput.current.value,
         author: authorInput.current.value,
         pages: pagesInput.current.value,
-        type: typeInput.current.value,
+        type: "book",
         isBorrowable: true,
         categoryId: categoryInput.current.value,
       });
-      res.data && navigate("books");
+      res.data && navigate("/books");
+      titleInput.current.value = "";
+      authorInput.current.value = "";
+      pagesInput.current.value = "";
+      categoryInput.current.value = "";
     } catch (err) {
       new Error(err);
     }
@@ -47,10 +50,6 @@ export default function NewBook() {
           <div>
             <label htmlFor="pages">Book Pages</label>
             <input required type="text" ref={pagesInput} id="pages" />
-          </div>
-          <div>
-            <label htmlFor="type">Book Type</label>
-            <input required type="text" ref={typeInput} id="type" />
           </div>
           <div>
             <label htmlFor="category">Book Category</label>

@@ -6,6 +6,8 @@ const mongoose = require("mongoose");
 const bookRoute = require("./routes/books");
 const categoryRoute = require("./routes/categories");
 const dvdRoute = require("./routes/dvds");
+const libraryItemsRoute = require("./routes/libraryItems");
+const cors = require("cors");
 
 dotenv.config();
 
@@ -16,15 +18,14 @@ async function main() {
   );
 }
 app.use(express.urlencoded({ extended: true }));
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  next();
-});
+app.use(cors());
+app.options("*", cors());
 
 app.use(express.json());
 app.use("/api/books", bookRoute);
 app.use("/api/dvds", dvdRoute);
 app.use("/api/categories", categoryRoute);
+app.use("/api/libraryItems", libraryItemsRoute);
 
 app.listen(PORT, () => {
   console.log("Backend is running");

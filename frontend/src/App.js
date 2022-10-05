@@ -7,6 +7,7 @@ import Books from "./pages/book/Books";
 import NewBook from "./pages/book/NewBook";
 import DVDs from "./pages/dvd/DVDs";
 import NewDVD from "./pages/dvd/NewDVD";
+import LibraryItems from "./pages/libraryItem/LibraryItems";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="categories" element={<Categories />} />
           <Route path="categories/newcategory" element={<NewCategory />} />
+          <Route path="libraryItems" element={<LibraryItems />} />
           <Route path="books" element={<Books />} />
           <Route path="books/newbook" element={<NewBook />} />
           <Route path="dvds" element={<DVDs />} />
