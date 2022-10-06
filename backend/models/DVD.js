@@ -21,8 +21,7 @@ const DVDSchema = new mongoose.Schema(
       required: true,
     },
     categoryId: {
-      type: Array,
-      required: false,
+      type: String,
     },
   },
   {

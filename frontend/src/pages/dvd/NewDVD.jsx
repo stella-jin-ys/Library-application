@@ -9,7 +9,6 @@ export default function NewDVD() {
   const navigate = useNavigate();
   const titleInput = useRef();
   const runtimeMinuteInput = useRef();
-  const typeInput = useRef();
   const categoryInput = useRef();
 
   const handleSubmit = async (e) => {
@@ -18,11 +17,14 @@ export default function NewDVD() {
       const res = await axios.post("http://localhost:8000/api/dvds", {
         title: titleInput.current.value,
         runtimeMinute: runtimeMinuteInput.current.value,
-        type: typeInput.current.value,
+        type: "dvd",
         isBorrowable: true,
         categoryId: categoryInput.current.value,
       });
-      res.data && navigate("dvds");
+      res.data && navigate("/dvds");
+      titleInput.current.value = "";
+      runtimeMinuteInput.current.value = "";
+      categoryInput.current.value = "";
     } catch (err) {
       new Error(err);
     }
@@ -40,11 +42,12 @@ export default function NewDVD() {
           </div>
           <div>
             <label htmlFor="runtimeMinute">DVD RuntimeMinute</label>
-            <input required type="text" ref={runtimeMinuteInput} id="author" />
-          </div>
-          <div>
-            <label htmlFor="type">DVD Type</label>
-            <input required type="text" ref={typeInput} id="type" />
+            <input
+              required
+              type="text"
+              ref={runtimeMinuteInput}
+              id="runtimeMinute"
+            />
           </div>
           <div>
             <label htmlFor="category">DVD Category</label>

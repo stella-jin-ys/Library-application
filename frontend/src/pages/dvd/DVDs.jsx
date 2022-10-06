@@ -19,6 +19,9 @@ export default function DVDs() {
     fetchDvds();
     setLoading(false);
   }, []);
+  if (loading) {
+    return <p>Loading</p>;
+  }
   return (
     <div className="dvds">
       <Sidebar />
@@ -38,7 +41,7 @@ export default function DVDs() {
                     alt=""
                   />
                   <h3>{dvd.title}</h3>
-                  <p>{dvd.runtimeMinutes}</p>
+                  <p>Runtime {dvd.runtimeMinutes}</p>
                 </div>
               </li>
             ))}

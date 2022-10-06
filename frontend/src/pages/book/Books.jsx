@@ -13,12 +13,22 @@ export default function Books() {
     setLoading(true);
     const fetchBooks = async () => {
       const res = await axios.get("http://localhost:8000/api/books");
-      console.log(res.data);
       setBooks(res.data);
     };
     fetchBooks();
     setLoading(false);
-  }, []);
+  }, [setBooks]);
+  const handleDelete = async (id) => {
+    await axios.delete(`http://localhost:8000/api/books/${id}`);
+    setBooks(
+      books.filter((book) => {
+        return book._id !== id;
+      })
+    );
+  };
+  if (loading) {
+    return <p>Loading</p>;
+  }
   return (
     <div className="books">
       <Sidebar />
@@ -29,9 +39,9 @@ export default function Books() {
         </Link>
         <div className="bookInfo">
           <h1>All Books</h1>
-          <ul className="book">
-            {books.map((book) => (
-              <li key={book.id}>
+          <ul>
+            {books.reverse().map((book) => (
+              <li key={book._id}>
                 <div>
                   <img
                     src="https://images.pexels.com/photos/5739623/pexels-photo-5739623.jpeg?auto=compresscs=tinysrgbw=1600"
@@ -39,6 +49,12 @@ export default function Books() {
                   />
                   <h3>{book.title}</h3>
                   <p>{book.author}</p>
+                  <button
+                    className="delete"
+                    onClick={() => handleDelete(book._id)}
+                  >
+                    Delete
+                  </button>
                 </div>
               </li>
             ))}

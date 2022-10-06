@@ -14,8 +14,12 @@ router.post("/", async (req, res) => {
 
 // Ger All items
 router.get("/", async (req, res) => {
+  const itemId = req.params.id;
   try {
-    const items = await Item.find({}).populate("book").exec();
+    const items = await Item.find({ _id: itemId })
+      .populate("book")
+      .populate("dvd")
+      .exec();
     res.status(200).json(items);
   } catch (err) {
     res.status(500).json(err);

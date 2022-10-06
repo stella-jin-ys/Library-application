@@ -9,7 +9,7 @@ router.post("/", async (req, res) => {
     const savedBook = await newBook.save();
     res.status(200).json(savedBook);
   } catch (err) {
-    res.status(500).json(err);
+    req.status(500).json(err);
   }
 });
 
@@ -18,14 +18,7 @@ router.get("/", async (req, res) => {
   const categoryId = req.query.category;
   const type = req.query.type;
   try {
-    let books;
-    if (categoryId === Category.name) {
-      books = await Book.find({}).populate("categoryId").exec();
-    } else if (type) {
-      books = await Book.find({ type });
-    } else {
-      books = await Book.find();
-    }
+    books = await Book.find();
     res.status(200).json(books);
   } catch (err) {
     res.status(500).json(err);

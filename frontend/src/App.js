@@ -19,6 +19,7 @@ function App() {
           <Route path="categories/newcategory" element={<NewCategory />} />
           <Route path="libraryItems" element={<LibraryItems />} />
           <Route path="books" element={<Books />} />
+          <Route path="books/:id" element={<Books />} />
           <Route path="books/newbook" element={<NewBook />} />
           <Route path="dvds" element={<DVDs />} />
           <Route path="dvds/newDvd" element={<NewDVD />} />

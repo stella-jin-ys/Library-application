@@ -19,6 +19,9 @@ export default function LibraryItems() {
     fetchItems();
     setLoading(false);
   }, []);
+  if (loading) {
+    return <p>Loading</p>;
+  }
   return (
     <div className="books">
       <Sidebar />
@@ -29,6 +32,7 @@ export default function LibraryItems() {
         </Link>
         <div className="bookInfo">
           <h1>All Items</h1>
+
           <ul className="book">
             {items.map((item) => (
               <li key={item.id}>

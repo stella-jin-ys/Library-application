@@ -27,13 +27,17 @@
       }
       ul {
         padding: 5px;
+        display: flex;
+        flex-wrap: wrap;
       }
       li {
         list-style: none;
-      }
-      .book {
-        display: flex;
-        flex-wrap: wrap;
+
+        .delete {
+          float: none;
+          background-color: rgb(232, 173, 173);
+          cursor: pointer;
+        }
       }
     }
   }

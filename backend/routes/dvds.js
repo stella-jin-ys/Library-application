@@ -18,14 +18,7 @@ router.get("/", async (req, res) => {
   const categoryId = req.query.category;
   const type = req.query.type;
   try {
-    let dvds;
-    if (categoryId) {
-      dvds = await DVD.find({ categoryId });
-    } else if (type) {
-      dvds = await DVD.find({ type });
-    } else {
-      dvds = await DVD.find();
-    }
+    dvds = await DVD.find();
     res.status(200).json(dvds);
   } catch (err) {
     res.status(500).json(err);
