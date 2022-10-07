@@ -1,7 +1,5 @@
 const router = require("express").Router();
 const Reference = require("../models/Reference");
-const Category = require("../models/ Category");
-const Item = require("../models/LibraryItem");
 
 // Create Reference
 router.post("/", async (req, res) => {
@@ -16,16 +14,39 @@ router.post("/", async (req, res) => {
 
 // Get All references
 router.get("/", async (req, res) => {
-  const categoryName = req.query.categoryId;
-  const itemType = req.query.type;
   try {
-    let references;
-    if (categoryId) {
-      references = await Reference.find({ categoryId });
-    } else if (type) {
-      references = await Reference.find({ type });
+    references = await Reference.find();
+    res.status(200).json(references);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// Get reference
+router.get("/:id", async (req, res) => {
+  try {
+    const reference = await Reference.findById(req.params.id);
+    res.status(200).json(reference);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// Delete book
+router.delete("/:id", async (req, res) => {
+  try {
+    const reference = await Reference.findById(req.params.id);
+    if (reference.length !== 0) {
+      try {
+        if (reference) await reference.delete();
+        res.status(200).json("This reference has been deleted");
+      } catch (err) {
+        res.status(500).json(err);
+      }
     }
   } catch (err) {
     res.status(500).json(err);
   }
 });
+
+module.exports = router;

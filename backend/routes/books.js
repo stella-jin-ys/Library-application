@@ -1,6 +1,5 @@
 const router = require("express").Router();
 const Book = require("../models/Book");
-const Category = require("../models/Category");
 
 // Create book
 router.post("/", async (req, res) => {
@@ -15,8 +14,6 @@ router.post("/", async (req, res) => {
 
 // Get all books
 router.get("/", async (req, res) => {
-  const categoryId = req.query.category;
-  const type = req.query.type;
   try {
     books = await Book.find();
     res.status(200).json(books);

@@ -21,9 +21,7 @@ const AudioBookSchema = new mongoose.Schema(
       required: true,
     },
     categoryId: {
-      type: Number,
-      required: true,
-      unique: true,
+      type: String,
     },
   },
   {

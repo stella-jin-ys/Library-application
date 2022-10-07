@@ -19,6 +19,16 @@ export default function DVDs() {
     fetchDvds();
     setLoading(false);
   }, []);
+
+  const handleDelete = async (id) => {
+    await axios.delete(`http://localhost:8000/api/dvds/${id}`);
+    setDvds(
+      dvds.filter((dvd) => {
+        return dvd._id !== id;
+      })
+    );
+  };
+
   if (loading) {
     return <p>Loading</p>;
   }
@@ -42,6 +52,12 @@ export default function DVDs() {
                   />
                   <h3>{dvd.title}</h3>
                   <p>Runtime {dvd.runtimeMinutes}</p>
+                  <button
+                    className="delete"
+                    onClick={() => handleDelete(dvd._id)}
+                  >
+                    Delete
+                  </button>
                 </div>
               </li>
             ))}

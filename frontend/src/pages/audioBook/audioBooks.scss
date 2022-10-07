@@ -1,7 +1,7 @@
-.dvds {
+.audios {
   display: flex;
 
-  .dvdsContainer {
+  .audiosContainer {
     flex: 5;
 
     button {
@@ -15,7 +15,7 @@
       float: right;
     }
 
-    .dvdInfo {
+    .audioInfo {
       margin-top: 20px;
       text-align: center;
       width: 100%;

@@ -31,10 +31,14 @@ export default function Sidebar() {
             </Link>
           </li>
           <li>
-            <GraphicEqOutlinedIcon className="icon" /> Audio Book
+            <Link to="/audioBooks" className="link">
+              <GraphicEqOutlinedIcon className="icon" /> Audio Book
+            </Link>
           </li>
           <li>
-            <PsychologyAltOutlinedIcon className="icon" /> Reference Book
+            <Link to="/references" className="link">
+              <PsychologyAltOutlinedIcon className="icon" /> Reference Book
+            </Link>
           </li>
           <p className="title">Category</p>
           <li>

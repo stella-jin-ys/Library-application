@@ -6,7 +6,10 @@ const mongoose = require("mongoose");
 const bookRoute = require("./routes/books");
 const categoryRoute = require("./routes/categories");
 const dvdRoute = require("./routes/dvds");
+const audioBookRoute = require("./routes/audioBooks");
+const referenceRoute = require("./routes/references");
 const libraryItemsRoute = require("./routes/libraryItems");
+
 const cors = require("cors");
 
 dotenv.config();
@@ -24,6 +27,8 @@ app.options("*", cors());
 app.use(express.json());
 app.use("/api/books", bookRoute);
 app.use("/api/dvds", dvdRoute);
+app.use("/api/audioBooks", audioBookRoute);
+app.use("/api/references", referenceRoute);
 app.use("/api/categories", categoryRoute);
 app.use("/api/libraryItems", libraryItemsRoute);
 

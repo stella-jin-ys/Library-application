@@ -26,9 +26,7 @@ const ReferenceSchema = new mongoose.Schema(
       default: "No",
     },
     categoryId: {
-      type: Number,
-      required: true,
-      unique: true,
+      type: String,
     },
   },
   {
