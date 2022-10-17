@@ -16,10 +16,7 @@ router.post("/", async (req, res) => {
 router.get("/", async (req, res) => {
   const itemId = req.params.id;
   try {
-    const items = await Item.find({ _id: itemId })
-      .populate("book")
-      .populate("dvd")
-      .exec();
+    const items = await Item.findOne().populate("book").exec();
     res.status(200).json(items);
   } catch (err) {
     res.status(500).json(err);
