@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const Item = require("../models/LibraryItem");
+const Book = require("../models/Book");
 
 //Create Item
 router.post("/", async (req, res) => {
@@ -12,11 +13,11 @@ router.post("/", async (req, res) => {
   }
 });
 
-// Ger All items
+// Get All items
 router.get("/", async (req, res) => {
-  const itemId = req.params.id;
   try {
-    const items = await Item.findOne().populate("book").exec();
+    const books = await Book.find().select("book");
+    console.log(books);
     res.status(200).json(items);
   } catch (err) {
     res.status(500).json(err);
