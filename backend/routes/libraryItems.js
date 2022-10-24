@@ -14,9 +14,9 @@ router.post("/", async (req, res) => {
 });
 
 // Get All items
-router.get("/", async (req, res) => {
+router.get("/books", async (req, res) => {
   try {
-    const books = await Book.find().select("book");
+    const books = await Item.find().populate("books").exec();
     console.log(books);
     res.status(200).json(items);
   } catch (err) {

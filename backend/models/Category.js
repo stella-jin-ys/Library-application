@@ -6,12 +6,6 @@ const CategorySchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    libraryItems: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "LibraryItem",
-      },
-    ],
   },
   {
     timestamps: true,
