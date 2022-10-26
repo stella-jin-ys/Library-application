@@ -21,9 +21,8 @@ const ItemSchema = new mongoose.Schema(
       ref: "Reference",
     },
 
-    categoryId: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Category",
+    categories: {
+      type: Array,
     },
   },
   {

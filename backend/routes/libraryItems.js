@@ -14,10 +14,20 @@ router.post("/", async (req, res) => {
 });
 
 // Get All items
-router.get("/books", async (req, res) => {
+router.get("/", async (req, res) => {
+  const category = req.query.category;
   try {
-    const books = await Item.find().populate("books").exec();
-    console.log(books);
+    let items;
+    if (category) {
+      items = await Item.find({
+        categories: {
+          $in: [category],
+        },
+      });
+    } else {
+      items = await Item.where("books").populate("title");
+    }
+    console.log(items);
     res.status(200).json(items);
   } catch (err) {
     res.status(500).json(err);
