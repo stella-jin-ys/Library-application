@@ -3,8 +3,32 @@ const mongoose = require("mongoose");
 const ItemSchema = new mongoose.Schema(
   {
     books: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Book",
+      title: {
+        type: String,
+        required: true,
+        unique: true,
+      },
+      author: {
+        type: String,
+        required: true,
+        unique: false,
+      },
+      pages: {
+        type: Number,
+        required: true,
+        unique: false,
+      },
+      type: {
+        type: String,
+        require: true,
+      },
+      isBorrowable: {
+        type: Boolean,
+        required: true,
+      },
+      categories: {
+        type: Array,
+      },
     },
 
     dvds: {
