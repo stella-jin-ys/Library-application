@@ -32,8 +32,27 @@ const ItemSchema = new mongoose.Schema(
     },
 
     dvds: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "DVD",
+      title: {
+        type: String,
+        required: true,
+        unique: true,
+      },
+      runtimeMinutes: {
+        type: String,
+        required: true,
+        unique: false,
+      },
+      type: {
+        type: String,
+        require: true,
+      },
+      isBorrowable: {
+        type: Boolean,
+        required: true,
+      },
+      categoryId: {
+        type: String,
+      },
     },
     audioBooks: {
       type: mongoose.Schema.Types.ObjectId,
