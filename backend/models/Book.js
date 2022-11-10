@@ -25,8 +25,9 @@ const BookSchema = new mongoose.Schema(
       type: Boolean,
       required: true,
     },
-    categories: {
-      type: Array,
+    category: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "category",
     },
   },
   {

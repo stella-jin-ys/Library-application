@@ -21,6 +21,18 @@ router.get("/", async (req, res) => {
     res.status(500).json(err);
   }
 });
+router.get("/category1", async (req, res) => {
+  try {
+    booksCat = await Book.find()
+      .populate("category1")
+      .exec((err, product) => {
+        console.log(booksCat);
+        res.status(200).json(books);
+      });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 // Get book
 router.get("/:id", async (req, res) => {
